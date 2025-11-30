@@ -1,3 +1,230 @@
+/* === БАЗОВЫЕ НАСТРОЙКИ (НЕ ТРОГАЕМ) === */
+:root {
+    --bg-color: #0a0a0a;
+    --card-bg: rgba(255, 255, 255, 0.08);
+    --text-main: #ffffff;
+    --text-sec: #999999;
+    --accent: #FFD700;
+    --radius: 16px;
+}
+
+* { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+
+body {
+    margin: 0; padding: 0;
+    font-family: -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-main);
+    padding-top: 70px; padding-bottom: 90px;
+}
+
+a { text-decoration: none; color: inherit; }
+button { border: none; outline: none; font-family: inherit; cursor: pointer; }
+
+/* === ШАПКА === */
+.app-header {
+    position: fixed; top: 0; left: 0; right: 0;
+    height: 60px;
+    background: rgba(10, 10, 10, 0.95);
+    backdrop-filter: blur(10px);
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 0 20px;
+    z-index: 100;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+.header-logo { height: 40px; width: auto; }
+.header-icon {
+    width: 36px; height: 36px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.1);
+    display: flex; align-items: center; justify-content: center;
+    color: #fff;
+    border: 1px solid rgba(255,255,255,0.1);
+}
+
+/* === БЛОКИ === */
+.content { padding: 15px; padding-bottom: 1px !important; margin-bottom: 80px !important; }
+.page { display: none; animation: fadeIn 0.3s ease; }
+.page.active { display: block; }
+@keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+.subtitle-section {
+    text-align: center; padding: 10px;
+    background: rgba(255,255,255,0.03);
+    margin-bottom: 20px; border-radius: 12px;
+}
+.subtitle-line { font-size: 14px; color: var(--text-sec); }
+
+/* === БАННЕР И МЕНЮ === */
+.banner-section-wrapper {
+    border-radius: var(--radius); overflow: hidden;
+    background: var(--card-bg); margin-bottom: 20px; position: relative;
+}
+.banner-image { width: 100%; height: 180px; object-fit: cover; display: block; }
+.camp-info-card-overlap { padding: 15px; }
+.camp-info-title { font-size: 18px; margin-bottom: 8px; font-weight: 700; }
+.camp-info-description { font-size: 13px; color: var(--text-sec); margin-bottom: 15px; padding-right: 100px; }
+
+.yellow-participate-button {
+    background: var(--accent); color: #000;
+    padding: 8px 16px; border-radius: 8px;
+    font-weight: 700; font-size: 12px;
+    position: absolute; bottom: 15px; right: 15px;
+}
+
+.cta-button-white {
+    width: 100%; background: #fff; color: #000;
+    padding: 16px; border-radius: 12px;
+    font-size: 16px; font-weight: 600; margin-bottom: 20px;
+}
+
+.main-menu-grid {
+    display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px;
+    margin-bottom: 20px;
+}
+.menu-button {
+    background: var(--card-bg); padding: 15px 5px;
+    border-radius: 12px; color: #fff;
+    display: flex; flex-direction: column; align-items: center; gap: 8px;
+}
+.menu-button-text { font-size: 11px; }
+
+/* === КАРТОЧКИ УСЛУГ (КОМПАКТНЫЕ) === */
+/* Я ИЗМЕНИЛ ТОЛЬКО ЭТОТ БЛОК */
+.service-card {
+    background: var(--card-bg);
+    border-radius: 12px;
+    border: 1px solid rgba(255,255,255,0.05);
+
+    padding: 12px;
+    margin-bottom: 20px;
+
+    width: 100%;
+    max-width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.service-header { 
+    display: flex; justify-content: space-between; align-items: center;
+    margin-bottom: 5px; /* Было 12px -> Стало 5px */
+}
+
+.service-type { 
+    font-size: 17px; /* Было 20px -> Стало 17px */
+    font-weight: 700; 
+    color: #fff; 
+}
+
+.service-price { 
+    font-size: 17px; /* Было 20px -> Стало 17px */
+    font-weight: 700; 
+    color: var(--accent); 
+}
+
+.service-details {
+    display: flex; gap: 15px; margin-bottom: 5px; /* Было 12px -> Стало 5px */
+    font-size: 13px; /* Было 14px -> Стало 13px */
+    color: #cccccc;
+}
+
+.service-description {
+    font-size: 12px; /* Было 14px -> Стало 12px */
+    line-height: 1.4; 
+    color: #bbbbbb;
+    margin: 0;
+}
+/* === КОНЕЦ ИЗМЕНЕНИЙ === */
+
+
+/* === ОСТАЛЬНЫЕ СТИЛИ (КАК БЫЛО) === */
+.location-card, .trainer-card, .live-status-card {
+    background: var(--card-bg); padding: 15px; margin-bottom: 10px;
+    border-radius: var(--radius); border: 1px solid rgba(255,255,255,0.05);
+}
+.live-status-card { display: flex; align-items: center; gap: 15px; background: rgba(76, 175, 80, 0.1); border-color: #4CAF50; }
+.live-indicator { width: 10px; height: 10px; background: #4CAF50; border-radius: 50%; display: block; }
+.trainer-avatar { width: 40px; height: 40px; border-radius: 50%; object-fit: cover; }
+
+/* === КАЛЕНДАРЬ === */
+.calendar-container { overflow: hidden; margin-bottom: 15px; }
+.calendar-scroll { display: flex; gap: 8px; overflow-x: auto; padding: 5px 0; scrollbar-width: none; }
+.calendar-scroll::-webkit-scrollbar { display: none; }
+
+.calendar-day {
+    min-width: 55px; height: 60px;
+    background: rgba(255,255,255,0.05); border-radius: 10px;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    border: 1px solid rgba(255,255,255,0.1); cursor: pointer; flex-shrink: 0;
+}
+.calendar-day.active {background: #070707;color: #000;border-color: #fff;}
+
+/* === НИЖНЕЕ МЕНЮ === */
+.bottom-nav {
+    position: fixed; bottom: 0; left: 0; right: 0;
+    height: 80px; background: #111;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    display: flex; justify-content: space-around; align-items: center;
+    padding-bottom: 20px; z-index: 100;
+}
+.nav-item {
+    background: none; color: #666;
+    display: flex; flex-direction: column; align-items: center;
+    font-size: 10px; gap: 4px;
+}
+.nav-item.active { color: #fff; }
+
+/* === ПРОФИЛЬ === */
+.profile-header { text-align: center; padding: 20px; }
+.profile-icon-large { 
+    width: 80px; height: 80px; background: #222; border-radius: 50%; margin: 0 auto 15px; 
+    display: flex; align-items: center; justify-content: center; border: 2px solid #333; color: #fff;
+}
+.qr-code-container {
+    background: #fff; padding: 20px; border-radius: 20px; text-align: center; margin-top: 20px; color: #000;
+}
+#qrCodeCanvas { width: 100%; max-width: 200px; height: auto; background: #eee; margin-bottom: 10px; }
+.btn-scan-test {
+    width: 100%; padding: 12px; background: #000; color: #fff; border-radius: 10px; margin-top: 10px; font-weight: bold;
+}
+
+/* === МОДАЛКА === */
+.modal-overlay {
+    position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0,0,0,0.8); display: none;
+    justify-content: center; align-items: flex-end; z-index: 2000;
+}
+.modal-content {
+    background: #1a1a1a; width: 100%; padding: 25px;
+    border-radius: 24px 24px 0 0; animation: slideUp 0.3s; position: relative;
+}
+@keyframes slideUp { from { transform: translateY(100%); } to { transform: translateY(0); } }
+input, textarea, select {
+    width: 100%; padding: 14px; background: #333; border: none;
+    border-radius: 12px; color: #fff; margin-bottom: 15px; font-size: 16px;
+}
+.btn-submit {
+    width: 100%; padding: 16px; background: var(--accent);
+    color: #000; font-weight: bold; border-radius: 14px; font-size: 16px;
+}
+.modal-close { 
+    position: absolute; top: 20px; right: 20px; 
+    background: #333; color: #fff; width: 30px; height: 30px; border-radius: 50%; display: flex; align-items: center; justify-content: center;
+}
+
+/* === ФУТЕР === */
+.app-footer { padding: 40px 20px; text-align: center; border-top: 1px solid #222; margin-top: 20px; }
+.social-icons { display: flex; justify-content: center; gap: 20px; margin-bottom: 15px; }
+.social-link { color: #666; }
+.footer-text { font-size: 12px; color: #444; margin-top: 10px; }
+
+/* Написать нам */
+.write-us-button {
+    display: flex; align-items: center; justify-content: center; gap: 10px;
+    width: 100%; padding: 15px; background: rgba(255,255,255,0.05);
+    border-radius: 12px; margin: 20px 0; border: 1px solid rgba(255,255,255,0.1);
+}
+.write-us-text { color: #fff; font-weight: 600; }
 :root {
   /* Primitive Color Tokens */
   --color-white: rgba(255, 255, 255, 1);
@@ -1022,19 +1249,28 @@ body {
     width: 100%;
     max-width: 400px;
     margin: 12px auto 25px auto;
-    padding: 14px 20px;
-    background: linear-gradient(135deg, #ffffff 0%, #f0f8ff 50%, #e0f7ff 100%);
-    color: #1a1a1a;
-    border: none;
-    border-radius: 20px;
+    padding: 16px 20px;
+    background: linear-gradient(135deg, #7c3aed 0%, #a855f7 100%);
+    color: #ffffff;
+    border-radius: 24px;
     font-size: 16px;
     font-weight: 600;
+    border: none;
     cursor: pointer;
-    transition: all 300ms ease;
-    position: relative;
-    background-size: 200% 200%;
-    animation: gradient-pulse 3s ease-in-out infinite;
-    box-shadow: 0 4px 15px rgba(100, 200, 255, 0.2);
+    box-shadow: 0 8px 20px rgba(124, 58, 237, 0.3);
+    transition: all 0.3s ease;
+    letter-spacing: 0.5px;
+}
+
+.cta-button-white:hover {
+    background: linear-gradient(135deg, #a855f7 0%, #d946ef 100%);
+    box-shadow: 0 12px 30px rgba(124, 58, 237, 0.5);
+    transform: translateY(-2px);
+}
+
+.cta-button-white:active {
+    transform: translateY(0);
+    box-shadow: 0 4px 12px rgba(124, 58, 237, 0.3);
 }
 
 @keyframes gradient-pulse {
@@ -1300,7 +1536,7 @@ body {
 .page-title {
     font-size: 32px;
     font-weight: 800;
-    color: #00ff88;
+    color: #ffffff;
     margin-bottom: 30px;
     text-align: center;
 }
@@ -2614,4 +2850,41 @@ textarea.form-control {
         transform: translateX(-50%);
         border-radius: 20px 20px 0 0;
     }
+}.trainer-card {
+    display: flex;
+    gap: 30px;
+    align-items: flex-start;
+}
+
+.trainer-avatar {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+    flex-shrink: 0;
+    order: 1;
+}
+
+.trainer-info {
+    flex: 1;
+    order: 2;
+}
+
+.trainer-name {
+    font-size: 24px;
+    color: #00ff88;
+    margin: 0 0 5px 0;
+}
+
+.trainer-role {
+    font-size: 13px;
+    color: #888888;
+    margin: 0 0 15px 0;
+}
+
+.trainer-bio {
+    font-size: 14px;
+    color: #cccccc;
+    line-height: 1.6;
+    margin: 0;
 }
